@@ -1,0 +1,644 @@
+ /* All CSS copied exactly as provided in your document */
+        /* =============== Globals ============== */
+        * {
+          font-family: "Ubuntu", sans-serif;
+          margin: 0;
+          padding: 0;
+          box-sizing: border-box;
+        }
+
+        :root {
+          --blue: #2a2185;
+          --white: #fff;
+          --gray: #f5f5f5;
+          --black1: #222;
+          --black2: #999;
+          --red: #f44336;
+          --green: #4CAF50;
+          --orange: #FF9800;
+        }
+
+        body {
+          min-height: 100vh;
+          overflow-x: hidden;
+        }
+
+        .container {
+          position: relative;
+          width: 100%;
+        }
+
+        /* =============== Navigation ================ */
+        .navigation {
+          position: fixed;
+          width: 300px;
+          height: 100%;
+          background: var(--blue);
+          border-left: 10px solid var(--blue);
+          transition: 0.5s;
+          overflow: hidden;
+        }
+        .navigation.active {
+          width: 80px;
+        }
+
+        .navigation ul {
+          position: absolute;
+          top: 0;
+          left: 0;
+          width: 100%;
+        }
+
+        .navigation ul li {
+          position: relative;
+          width: 100%;
+          list-style: none;
+          border-top-left-radius: 30px;
+          border-bottom-left-radius: 30px;
+        }
+
+        .navigation ul li:hover,
+        .navigation ul li.hovered {
+          background-color: var(--white);
+        }
+
+        .navigation ul li:nth-child(1) {
+          margin-bottom: 40px;
+          pointer-events: none;
+        }
+
+        .navigation ul li a {
+          position: relative;
+          display: block;
+          width: 100%;
+          display: flex;
+          text-decoration: none;
+          color: var(--white);
+        }
+        .navigation ul li:hover a,
+        .navigation ul li.hovered a {
+          color: var(--blue);
+        }
+
+        .navigation ul li a .icon {
+          position: relative;
+          display: block;
+          min-width: 60px;
+          height: 60px;
+          line-height: 75px;
+          text-align: center;
+        }
+        .navigation ul li a .icon ion-icon {
+          font-size: 1.75rem;
+        }
+
+        .navigation ul li a .title {
+          position: relative;
+          display: block;
+          padding: 0 10px;
+          height: 60px;
+          line-height: 60px;
+          text-align: start;
+          white-space: nowrap;
+        }
+
+        /* --------- curve outside ---------- */
+        .navigation ul li:hover a::before,
+        .navigation ul li.hovered a::before {
+          content: "";
+          position: absolute;
+          right: 0;
+          top: -50px;
+          width: 50px;
+          height: 50px;
+          background-color: transparent;
+          border-radius: 50%;
+          box-shadow: 35px 35px 0 10px var(--white);
+          pointer-events: none;
+        }
+        .navigation ul li:hover a::after,
+        .navigation ul li.hovered a::after {
+          content: "";
+          position: absolute;
+          right: 0;
+          bottom: -50px;
+          width: 50px;
+          height: 50px;
+          background-color: transparent;
+          border-radius: 50%;
+          box-shadow: 35px -35px 0 10px var(--white);
+          pointer-events: none;
+        }
+
+        /* ===================== Main ===================== */
+        .main {
+          position: absolute;
+          width: calc(100% - 300px);
+          left: 300px;
+          min-height: 100vh;
+          background: var(--white);
+          transition: 0.5s;
+        }
+        .main.active {
+          width: calc(100% - 80px);
+          left: 80px;
+        }
+
+        .topbar {
+          width: 100%;
+          height: 60px;
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          padding: 0 10px;
+        }
+
+        .toggle {
+          position: relative;
+          width: 60px;
+          height: 60px;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          font-size: 2.5rem;
+          cursor: pointer;
+        }
+
+        .search {
+          position: relative;
+          width: 400px;
+          margin: 0 10px;
+        }
+
+        .search label {
+          position: relative;
+          width: 100%;
+        }
+
+        .search label input {
+          width: 100%;
+          height: 40px;
+          border-radius: 40px;
+          padding: 5px 20px;
+          padding-left: 35px;
+          font-size: 18px;
+          outline: none;
+          border: 1px solid var(--black2);
+        }
+
+        .search label ion-icon {
+          position: absolute;
+          top: 0;
+          left: 10px;
+          font-size: 1.2rem;
+        }
+
+        .user {
+          position: relative;
+          width: 40px;
+          height: 40px;
+          border-radius: 50%;
+          overflow: hidden;
+          cursor: pointer;
+        }
+
+        .user img {
+          position: absolute;
+          top: 0;
+          left: 0;
+          width: 100%;
+          height: 100%;
+          object-fit: cover;
+        }
+
+        /* ======================= Cards ====================== */
+        .cardBox {
+          position: relative;
+          width: 100%;
+          padding: 20px;
+          display: grid;
+          grid-template-columns: repeat(4, 1fr);
+          grid-gap: 30px;
+        }
+
+        .cardBox .card {
+          position: relative;
+          background: var(--white);
+          padding: 30px;
+          border-radius: 20px;
+          display: flex;
+          justify-content: space-between;
+          cursor: pointer;
+          box-shadow: 0 7px 25px rgba(0, 0, 0, 0.08);
+        }
+
+        .cardBox .card .numbers {
+          position: relative;
+          font-weight: 500;
+          font-size: 2.5rem;
+          color: var(--blue);
+        }
+
+        .cardBox .card .cardName {
+          color: var(--black2);
+          font-size: 1.1rem;
+          margin-top: 5px;
+        }
+
+        .cardBox .card .iconBx {
+          font-size: 3.5rem;
+          color: var(--black2);
+        }
+
+        .cardBox .card:hover {
+          background: var(--blue);
+        }
+        .cardBox .card:hover .numbers,
+        .cardBox .card:hover .cardName,
+        .cardBox .card:hover .iconBx {
+          color: var(--white);
+        }
+
+        /* ================== Details List ============== */
+        .details {
+          position: relative;
+          width: 100%;
+          padding: 20px;
+          display: grid;
+          grid-template-columns: 1fr 1fr;
+          grid-gap: 30px;
+        }
+
+        .details .addQuizSection,
+        .details .recentQuizzes,
+        .details .recentOrders,
+        .details .recentCustomers {
+          position: relative;
+          display: grid;
+          min-height: 500px;
+          background: var(--white);
+          padding: 20px;
+          box-shadow: 0 7px 25px rgba(0, 0, 0, 0.08);
+          border-radius: 20px;
+        }
+
+        .details .cardHeader {
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+        }
+
+        .cardHeader h2 {
+          font-weight: 600;
+          color: var(--blue);
+        }
+
+        .cardHeader .btn {
+          position: relative;
+          padding: 5px 10px;
+          background: var(--blue);
+          text-decoration: none;
+          color: var(--white);
+          border-radius: 6px;
+          font-weight: 500;
+          transition: all 0.3s ease;
+        }
+
+        .cardHeader .btn:hover {
+          background: #3a31b0;
+        }
+
+
+        /* ============== Question Form Styles ================ */
+        .quizFormContainer {
+            display: block; /* Changed from 'none' to 'block' for static display */
+            margin-top: 20px;
+            transition: all 0.3s ease;
+          }
+          
+          .quizFormContainer.active {
+            display: block;
+            animation: fadeIn 0.5s;
+          }
+          
+          @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(-10px); }
+            to { opacity: 1; transform: translateY(0); }
+          }
+          
+          .quizForm {
+            width: 100%;
+            padding: 20px;
+            background-color: var(--gray);
+            border-radius: 10px;
+          }
+          
+          .formGroup {
+            margin-bottom: 15px;
+          }
+          
+          .formRow {
+            display: flex;
+            gap: 20px;
+          }
+          
+          .formRow .formGroup {
+            flex: 1;
+          }
+          
+          .formGroup label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 500;
+            color: var(--black1);
+          }
+          
+          .formGroup input,
+          .formGroup select,
+          .formGroup textarea {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 6px;
+            font-size: 14px;
+            transition: border 0.3s ease;
+          }
+          
+          .formGroup input:focus,
+          .formGroup select:focus,
+          .formGroup textarea:focus {
+            border-color: var(--blue);
+            outline: none;
+          }
+          
+          .formGroup textarea {
+            resize: vertical;
+            min-height: 100px;
+          }
+          
+          .answerSection {
+            margin-top: 20px;
+            border-top: 1px solid #ddd;
+            padding-top: 20px;
+          }
+          
+          .answerSection h3 {
+            margin-bottom: 15px;
+            color: var(--blue);
+            font-weight: 500;
+          }
+          
+          .answerRow {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+          }
+          
+          .answerRow input[type="text"] {
+            flex: 1;
+          }
+          
+          .correctAnswer {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            white-space: nowrap;
+          }
+          
+          .formActions {
+            display: flex;
+            justify-content: flex-end;
+            gap: 10px;
+            margin-top: 20px;
+          }
+          
+          .btnCancel,
+          .btnSubmit {
+            padding: 10px 20px;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            font-weight: 500;
+            transition: all 0.3s ease;
+          }
+          
+          .btnCancel {
+            background-color: #f1f1f1;
+            color: var(--black1);
+          }
+          
+          .btnSubmit {
+            background-color: var(--blue);
+            color: var(--white);
+          }
+          
+          .btnCancel:hover {
+            background-color: #e0e0e0;
+          }
+          
+          .btnSubmit:hover {
+            background-color: #3a31b0;
+          }
+          
+          /* ============== Question List Styles ================ */
+          .questionList {
+            margin-top: 20px;
+            max-height: 600px;
+            overflow-y: auto;
+          }
+          
+          .questionItem {
+            background: var(--gray);
+            border-radius: 10px;
+            padding: 15px;
+            margin-bottom: 15px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+            transition: all 0.3s ease;
+          }
+          
+          .questionItem:hover {
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+          }
+          
+          .questionHeader {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 10px;
+          }
+          
+          .questionHeader h4 {
+            font-weight: 500;
+            color: var(--black1);
+            margin: 0;
+            padding-right: 10px;
+          }
+          
+          .questionBadge {
+            padding: 2px 8px;
+            border-radius: 4px;
+            font-size: 12px;
+            font-weight: 500;
+            white-space: nowrap;
+          }
+          
+          .questionBadge.easy {
+            background-color: var(--green);
+            color: white;
+          }
+          
+          .questionBadge.medium {
+            background-color: var(--orange);
+            color: white;
+          }
+          
+          .questionBadge.hard {
+            background-color: var(--red);
+            color: white;
+          }
+          
+          .answerList {
+            margin-top: 10px;
+            border-top: 1px dashed #ddd;
+            padding-top: 10px;
+          }
+          
+          .answerItem {
+            position: relative;
+            padding: 8px 12px;
+            border-radius: 4px;
+            margin-bottom: 5px;
+            background-color: white;
+            border: 1px solid #eee;
+            font-size: 14px;
+          }
+          
+          .answerItem.correct {
+            background-color: rgba(76, 175, 80, 0.1);
+            border-color: var(--green);
+            font-weight: 500;
+          }
+          
+          .answerItem.correct::before {
+            content: "✓";
+            position: absolute;
+            right: 10px;
+            color: var(--green);
+          }
+          
+          .questionActions {
+            display: flex;
+            justify-content: flex-end;
+            gap: 10px;
+            margin-top: 10px;
+            padding-top: 10px;
+            border-top: 1px dashed #ddd;
+          }
+          
+          .questionActions button {
+            border: none;
+            background: none;
+            font-size: 1.2rem;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            transition: all 0.3s ease;
+          }
+          
+          .editBtn {
+            color: #2196F3;
+          }
+          
+          .deleteBtn {
+            color: var(--red);
+          }
+          
+          .editBtn:hover,
+          .deleteBtn:hover {
+            background-color: rgba(0, 0, 0, 0.1);
+          }
+          
+          /* Responsive styles for question form and list */
+          @media (max-width: 768px) {
+            .formRow {
+              flex-direction: column;
+              gap: 15px;
+            }
+            
+            .answerRow {
+              flex-direction: column;
+              align-items: flex-start;
+              gap: 5px;
+            }
+            
+            .correctAnswer {
+              margin-left: 0;
+              margin-top: 5px;
+            }
+            
+            .questionHeader {
+              flex-direction: column;
+            }
+            
+            .questionBadge {
+              margin-top: 5px;
+              align-self: flex-start;
+            }
+          }
+
+        /* Action buttons for Recent Quizzes */
+        .action-buttons {
+          display: flex;
+          gap: 10px;
+        }
+
+        .btn-update,
+        .btn-delete {
+          cursor: pointer;
+          font-size: 1.2rem;
+          padding: 5px;
+          border-radius: 4px;
+          transition: all 0.3s ease;
+        }
+
+        .btn-update {
+          color: #4CAF50;
+        }
+
+        .btn-delete {
+          color: #F44336;
+        }
+
+        .btn-update:hover,
+        .btn-delete:hover {
+          background-color: rgba(0, 0, 0, 0.1);
+        }
+
+        /* Quiz status styles */
+        .quiz-status {
+          padding: 2px 8px;
+          border-radius: 4px;
+          font-size: 12px;
+          font-weight: 500;
+          margin-top: 5px;
+          display: inline-block;
+        }
+
+        .quiz-status.active {
+          background: #4CAF50;
+          color: white;
+        }
+
+        .quiz-status.draft {
+          background: #FFC107;
+          color: black;
+        }
+
+        .quiz-status.archived {
+          background: #9E9E9E;
+          color: white;
+        }
