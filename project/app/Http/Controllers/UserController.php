@@ -21,3 +21,4 @@ class UserController extends Controller
             return view('user.dashboard',compact("Quizzs"));        
     }
 }
+//osidf

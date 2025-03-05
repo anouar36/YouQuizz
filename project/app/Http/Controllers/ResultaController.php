@@ -24,6 +24,7 @@ class ResultaController extends Controller
             return view('user.ruseltat',);
         }
 
+
         return  view('user.Ruseltat',compact("Quizzs","n"));
     }
 }
