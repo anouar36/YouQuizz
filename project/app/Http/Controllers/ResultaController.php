@@ -28,3 +28,4 @@ class ResultaController extends Controller
         return  view('user.Ruseltat',compact("Quizzs","n"));
     }
 }
+//edrfghj
