@@ -11,7 +11,7 @@
         <div class="mb-6">
             <h1 id="result-title" class="text-3xl font-bold text-gray-800 mb-4 transform transition-all duration-700 translate-y-10 opacity-0">Quiz Completed!</h1>
             
-            <div id="score-circle" class="w-48 h-48 mx-auto mb-6 bg-green-500 rounded-full flex items-center justify-center shadow-lg transform transition-all duration-700 scale-50 opacity-0">
+            <div id="score-circle" class="w-48 h-48 mx-auto mb-6 rounded-full flex items-center justify-center shadow-lg transform transition-all duration-700 scale-50 opacity-0">
                 <span id="score-text" class="text-5xl font-extrabold text-white"></span>
             </div>
             
@@ -41,8 +41,16 @@
 
             // Simulate quiz result (replace with actual quiz logic)
             const totalQuestions = 10;
-            const correctAnswers = 7;
+            const correctAnswers = {{$Score}};
             const percentage = Math.round((correctAnswers / totalQuestions) * 100);
+            
+            // Set status and color based on score
+            let isWin = correctAnswers >= 5;
+            let resultStatus = isWin ? "You are Won!" : "You are Lost!";
+            let statusColor = isWin ? "bg-green-500" : "bg-orange-500";
+            
+            // Apply color to score circle
+            scoreCircle.classList.add(statusColor);
 
             // Animate result display
             function initializeAnimation() {
@@ -54,6 +62,7 @@
 
                 // Animate title
                 setTimeout(() => {
+                    resultTitle.textContent = resultStatus;
                     resultTitle.classList.remove('translate-y-10', 'opacity-0');
                     resultTitle.classList.add('translate-y-0', 'opacity-100');
                 }, 300);
@@ -69,7 +78,7 @@
 
                 // Animate result message
                 setTimeout(() => {
-                    resultMessage.textContent = getResultMessage(percentage);
+                    resultMessage.textContent = getResultMessage(percentage, isWin);
                     resultMessage.classList.remove('translate-y-10', 'opacity-0');
                     resultMessage.classList.add('translate-y-0', 'opacity-100');
                 }, 900);
@@ -97,12 +106,17 @@
                 window.requestAnimationFrame(step);
             }
 
-            // Generate result message based on percentage
-            function getResultMessage(percentage) {
-                if (percentage >= 90) return "Excellent! You're a quiz master!";
-                if (percentage >= 70) return "Great job! Keep learning!";
-                if (percentage >= 50) return "Good effort. You can improve!";
-                return "Keep practicing. You'll get better!";
+            // Generate result message based on percentage and win status
+            function getResultMessage(percentage, isWin) {
+                if (isWin) {
+                    if (percentage >= 90) return "Excellent! You're a quiz master!";
+                    if (percentage >= 70) return "Great job! Keep learning!";
+                    return "Good effort! You passed the quiz!";
+                } else {
+                    if (percentage >= 40) return "Almost there! Try again!";
+                    if (percentage >= 20) return "Keep practicing. You'll get better!";
+                    return "Don't give up! Everyone starts somewhere!";
+                }
             }
 
             // Button event listeners

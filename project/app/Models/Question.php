@@ -33,7 +33,7 @@ public function quizz()
     return $this->hasMany(quizz::class);
 }
 
-public function solutions()
+public function herstory()
 {
     return $this->hasMany(Solutions::class);
 }  

@@ -4,22 +4,24 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateQuestionQuizzTable extends Migration
+class CreateHerstoryesTable extends Migration
 {
     /**
      * Run the migrations.
-     * 2025_02_26_140345
      *
      * @return void
      */
     public function up()
     {
-        Schema::create('question_quizz', function (Blueprint $table) {
+        Schema::create('herstoryes', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('question_id');
-            $table->unsignedBigInteger('quizz_id');
+            $table->unsignedBigInteger('reponses_id');
+            $table->unsignedBigInteger('user_id');
+
             $table->foreign('question_id')->references('id')->on('questions')->onDelete('cascade');
-            $table->foreign('quizz_id')->references('id')->on('quizzs')->onDelete('cascade');
+            $table->foreign('reponses_id')->references('id')->on('reponses')->onDelete('cascade');
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
             $table->timestamps();
         });
     }
@@ -31,6 +33,6 @@ class CreateQuestionQuizzTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('question_quizz');
+        Schema::dropIfExists('herstoryes');
     }
 }

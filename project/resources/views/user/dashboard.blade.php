@@ -24,12 +24,12 @@
 		<h3 class="text-2xl font-bold mb-6 text-center">
 			Coding Quiz
 		</h3>
-		<form id="quizForm" class="space-y-4"  method="POST" action="{{ route('solutionid.store', ['id' => $n]) }}" >
+		<form id="quizForm" class="space-y-4"  method="POST" action="{{ route('herstory.create') }}" >
         @csrf
 			<!-- Question 1 -->
            
 			<div class="flex flex-col mb-4">
-			<input hidden id="Ques" name="Ques"
+			<input hidden id="Ques" name="ques"
 			    value="{{$Quizzs->questions[0]->id}}" class="mr-2" required>
 				<label  for="rep" class="text-lg text-gray-800 mb-2">
 					{{$Quizzs->questions[0]->question}}
@@ -56,7 +56,7 @@
 					Previous
 				</button>
 				
-				<button value="{{ route('solutionid.store', ['id' => $n]) }}"
+				<button
 						class="bg-blue-500 hover:bg-blue-600 
 							text-white px-4 py-1 rounded-md">
 					Next

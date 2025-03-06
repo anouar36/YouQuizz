@@ -7,6 +7,8 @@ use App\Http\Controllers\UserController;
 use App\Http\Controllers\admin\QuizzController;
 use App\Http\Controllers\QuestionController;
 use App\Http\Controllers\SolutionsController;
+use  App\Http\Controllers\HerstoryController;
+use App\Http\Controllers\resultaController;
 
 /*
 |--------------------------------------------------------------------------
@@ -57,15 +59,20 @@ Route::post('/quizz/create',[QuizzController::class,'create'])->name('quizz.crea
 // this for question
 Route::get('/question/index',[QuestionController::class,'index'])->name('questions.index');
 Route::post('/qestion/store', [QuestionController::class, 'store'])->name('question.store');
+
+
 Route::post('/solution', [SolutionsController::class, 'store'])->name('solution.store');
 Route::post('/user/dashboard', [UserController::class, 'index'])->name('solutionid.store');
 
-
 // this for User
-
 Route::middleware(['auth'])->prefix('user')->group(function () {
     Route::post('/ruseltat', [resultaController::class, 'index'])->name('user.ruseltat');
-   
+    Route::get('/ruseltat', [resultaController::class, 'index'])->name('user.ruseltat');
+
+});
+
+Route::middleware(['auth'])->prefix('herstory')->group(function () {
+    Route::post('/create', [HerstoryController::class, 'create'])->name('herstory.create');
 });
 
 

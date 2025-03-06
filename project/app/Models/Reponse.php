@@ -18,7 +18,7 @@ class Reponse extends Model
         return $this->belongsTo(Question::class);
     }
 
-    public function solutions()
+    public function herstory()
     {
         return $this->hasMany(Solutions::class);   
     }  

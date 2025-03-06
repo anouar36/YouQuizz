@@ -9,16 +9,17 @@ use App\Models\Question;
 
 class UserController extends Controller
 {
-    public function index(Request $request)
+    public function index()
     {
 
-         $Quizzs = Quizz::with(['questions' => function ($query) use ($n) {
-            $query->skip($n-1)->take(1); 
-        }, 'questions.reponses' => function ($query) {
-            $query->take(4); 
-        }])->where('isActive', true)
-          ->first();
-            return view('user.dashboard',compact("Quizzs"));        
+        $Quizzs = Quizz::with(['questions' => function ($query) {
+            $query->inRandomOrder()->take(1); 
+        }, 'questions.reponses'])
+        ->where('isActive', true)
+        ->first();
+
+        return view('user.dashboard',compact("Quizzs"));        
     }
+
+  
 }
-//osidf

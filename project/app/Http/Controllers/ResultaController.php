@@ -1,6 +1,10 @@
 <?php
 
 namespace App\Http\Controllers;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
+
+
 
 use Illuminate\Http\Request;
 
@@ -8,24 +12,30 @@ class ResultaController extends Controller
 {
     public function index (Request $request)
     {
-        $user = Auth::user();
-        $userId = $user->id; 
-        dd($request->all(),$userId ) ;
+        $user=Auth::user();
+        $userId=$user->id;
+       
 
-        $id = $request->input('id');
+        $reponces=DB::table('herstoryes')
+        ->where('user_id', '=', $userId)
+        ->distinct('reponses_id')
+        ->get();
+        
+        $Score=0;
+        
+        foreach($reponces as $reponce){
+            $reponceDB=DB::table('reponses')->where('id','=',$reponce->reponses_id)->first();
 
-        if($id!=null){
-            $n = $id + 1;
-        }else{
-            $n = $id === null ? 1  : $id;
+            if($reponceDB->isCorrect===true){
+                $Score++;
+            }
         }
 
-        if($n>3){
-            return view('user.ruseltat',);
-        }
+       
+        
+        
+    
 
-
-        return  view('user.Ruseltat',compact("Quizzs","n"));
+        return  view('user.Ruseltat',compact("Score"));
     }
 }
-//edrfghj
