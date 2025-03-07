@@ -43,7 +43,12 @@ class User extends Authenticatable
     public function herstory()
     {
         return $this->hasMany(Solutions::class);
-    }  
+    } 
+    
+    public function Resulta()
+    {
+        return $this->hasMany(Resulta::class);
+    } 
 
 
     /**

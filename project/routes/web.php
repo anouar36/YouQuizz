@@ -9,6 +9,8 @@ use App\Http\Controllers\QuestionController;
 use App\Http\Controllers\SolutionsController;
 use  App\Http\Controllers\HerstoryController;
 use App\Http\Controllers\resultaController;
+use App\Http\Controllers\StatuStafController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -69,10 +71,15 @@ Route::middleware(['auth'])->prefix('user')->group(function () {
     Route::post('/ruseltat', [resultaController::class, 'index'])->name('user.ruseltat');
     Route::get('/ruseltat', [resultaController::class, 'index'])->name('user.ruseltat');
 
+
 });
 
 Route::middleware(['auth'])->prefix('herstory')->group(function () {
     Route::post('/create', [HerstoryController::class, 'create'])->name('herstory.create');
+});
+
+Route::middleware(['auth'])->prefix('staf')->group(function () {
+    Route::get('/store', [StatuStafController::class, 'store'])->name('StatuStaf.store');
 });
 
 

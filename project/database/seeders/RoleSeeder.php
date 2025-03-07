@@ -24,6 +24,9 @@ class RoleSeeder extends Seeder
         Role::insert([
             'nameRole' => 'candidat',
         ]);
+        Role::insert([
+            'nameRole' => 'staf',
+        ]);
         
         // Role::create([
         //     "user_id" => $admin->id,

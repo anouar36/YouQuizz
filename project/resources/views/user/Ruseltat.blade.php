@@ -21,9 +21,11 @@
                 <button id="retry-btn" class="flex-1 bg-blue-500 text-white py-2 rounded-lg hover:bg-blue-600 transform transition-all duration-300 hover:scale-105 opacity-0">
                     Retry Quiz
                 </button>
-                <button id="home-btn" class="flex-1 bg-gray-200 text-gray-700 py-2 rounded-lg hover:bg-gray-300 transform transition-all duration-300 hover:scale-105 opacity-0">
+                <a href="{{route('StatuStaf.store')}}">
+                <button  class="flex-1 bg-gray-200 text-gray-700 py-2 rounded-lg hover:bg-gray-300 transform transition-all duration-300 hover:scale-105 opacity-0">
                     Home
                 </button>
+                </a>
             </div>
         </div>
     </div>

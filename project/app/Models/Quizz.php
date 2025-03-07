@@ -18,6 +18,10 @@ class Quizz extends Model
     public function questions(){
         return $this->belongsToMany(Question::class);
     }
+    public function Resulta()
+    {
+        return $this->hasMany(Resulta::class);
+    } 
     
 
 
