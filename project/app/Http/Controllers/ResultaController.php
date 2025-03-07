@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
+use App\Models\Resulta;
 
 
 
@@ -14,7 +15,15 @@ class ResultaController extends Controller
     {
         $user=Auth::user();
         $userId=$user->id;
+
+
        
+        $quizzId=DB::table('quizzs')
+        ->where('isActive', '=',true )
+        ->get();
+      
+       
+
 
         $reponces=DB::table('herstoryes')
         ->where('user_id', '=', $userId)
@@ -30,6 +39,13 @@ class ResultaController extends Controller
                 $Score++;
             }
         }
+
+        $resulta=Resulta::create([
+            'user_id' =>$userId,
+            'quizz_id'=>$quizzId[0]->id,
+            'score'   =>$Score,
+
+        ]);
 
        
         
